@@ -11,7 +11,6 @@
   "dependencies": {
     "brain.js": "^1.1.2",
     "mimir": "0.0.1",
-    "socket.io": "^2.1.0",
-    "express": "^4.16.3"
+    "socket.io": "^2.1.0"
   }
 }
