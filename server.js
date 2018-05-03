@@ -1,3 +1,6 @@
+var express = require('express');
+var app = express();
+
 const PORT = process.env.PORT || 8080
 function vec_result(res, num_classes) {
     var i = 0,
@@ -89,7 +92,7 @@ var util = require('util');
 var qs = require('querystring');
 var emotion='';
 var ed={};
-
+/*
 http.createServer(function (req, res) {
 
     console.log('Request received: ');
@@ -118,4 +121,38 @@ http.createServer(function (req, res) {
     res.end(JSON.stringify({ e: ed }));
 
 }).listen(PORT);
-console.log('Server running on port'+PORT);
+console.log('Server running on port'+PORT);*/
+
+
+app.post('/', function(req, res) {
+    console.log('Request received: ');
+    var body='';
+
+    //util.log(util.inspect(req)) // this line helps you inspect the request so you can see whether the data is in the url (GET) or the req body (POST)
+    //util.log('Request recieved: \nmethod: ' + req.method + '\nurl: ' + req.url) // this line logs just the method and url
+
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    req.on('data', function (chunk) {
+        body+=chunk;
+        console.log('GOT DATA!');
+    });
+
+    req.on('end', function () {
+        var pp=qs.parse(body);
+        console.log(JSON.parse(body).data);
+        test_bow_data = mimir.bow(JSON.parse(body).data, dict);
+        ed=net.run(test_bow_data);
+        console.log(ed);
+        emotion=classes_array[maxarg(net.run(test_bow_data))];
+        console.log(emotion);
+    });
+    //res.end(emotion);
+    //console.log(emotion);
+    res.end(JSON.stringify({ e: ed }));
+
+
+});
+
+app.listen(PORT, function() {
+    console.log('Our app is running on http://localhost:' + PORT);
+});
