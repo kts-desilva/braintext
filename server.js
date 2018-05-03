@@ -1,3 +1,4 @@
+const PORT = process.env.PORT || 8080
 function vec_result(res, num_classes) {
     var i = 0,
         vec = [];
@@ -116,5 +117,5 @@ http.createServer(function (req, res) {
     //console.log(emotion);
     res.end(JSON.stringify({ e: ed }));
 
-}).listen(3000);
-console.log('Server running on port 1337');
+}).listen(PORT);
+console.log('Server running on port'+PORT);
