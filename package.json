@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "brain.js": "^1.1.2",
+    "express": "^4.16.3",
     "mimir": "0.0.1",
     "socket.io": "^2.1.0"
   }
