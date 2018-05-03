@@ -116,5 +116,5 @@ http.createServer(function (req, res) {
     //console.log(emotion);
     res.end(JSON.stringify({ e: ed }));
 
-}).listen(1337);
+}).listen(3000);
 console.log('Server running on port 1337');
