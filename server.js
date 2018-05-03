@@ -105,7 +105,7 @@ http.createServer(function (req, res) {
     });
 
     req.on('end', function () {
-        var pp=qs.parse(body);
+        //var pp=qs.parse(body);
         console.log(JSON.parse(body).data);
         test_bow_data = mimir.bow(JSON.parse(body).data, dict);
         ed=net.run(test_bow_data);
